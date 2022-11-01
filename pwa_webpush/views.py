@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.views.generic import TemplateView
+from django.conf import settings
 
 from pwa_webpush.forms import SubscriptionForm, WebPushForm
 from . import app_settings
@@ -92,5 +93,5 @@ class ServiceWorkerView(TemplateView):
     Therefore, use TemplateView in order to server the webpush_serviceworker.js
     """
 
-    template_name = "serviceworker.js"
+    template_name = settings.PWA_SERVICE_WORKER_PATH
     content_type = "application/javascript"
